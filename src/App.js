@@ -1,5 +1,5 @@
 import { useEffect, Suspense, lazy } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Container from "./components/Container/Container";
 import PrivateRoute from "./components/routers/PrivateRoute";
