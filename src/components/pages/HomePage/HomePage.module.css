@@ -1,0 +1,17 @@
+.title {
+  font-size: 35px;
+  text-align: center;
+  padding: 30px;
+}
+
+.buttonBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1;
+  margin-top: 80px;
+}
+
+.buttonLink:not(:last-child) {
+  margin-bottom: 15px;
+}

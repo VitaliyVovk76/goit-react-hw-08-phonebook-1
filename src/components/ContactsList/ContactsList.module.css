@@ -5,7 +5,10 @@
   margin-left: auto;
   margin-right: auto;
 }
+.contactItem {
+  text-align: center;
+}
 .contactButton {
-  width: 60px;
+  padding: 0px 10px;
   margin-left: 40px;
 }

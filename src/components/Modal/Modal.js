@@ -1,13 +1,14 @@
-import { Button } from "react-bootstrap";
-import { Modal } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import React, { useState } from "react";
 import ContatcForm from "../ContactForm/ContactForm";
+import styles from "./Modal.module.css";
 
 function MyVerticallyCenteredModal(props) {
   return (
     <Modal
       {...props}
-      size="lg"
+      className={styles.modal}
+      size="sm"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -19,19 +20,20 @@ function MyVerticallyCenteredModal(props) {
       <Modal.Body>
         <ContatcForm onHide={props.onHide} />
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
     </Modal>
   );
 }
 
-function MyModal() {
+function ModalContatcForm() {
   const [modalShow, setModalShow] = useState(false);
 
   return (
     <>
-      <Button variant="primary" onClick={() => setModalShow(true)}>
+      <Button
+        className={styles.buttonAddContact}
+        variant="success"
+        onClick={() => setModalShow(true)}
+      >
         Add Contact
       </Button>
 
@@ -43,4 +45,4 @@ function MyModal() {
   );
 }
 
-export default MyModal;
+export default ModalContatcForm;

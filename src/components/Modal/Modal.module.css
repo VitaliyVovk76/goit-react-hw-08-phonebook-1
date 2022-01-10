@@ -1,8 +1,9 @@
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+.buttonAddContact {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal {
+  /* max-width: 400px; */
 }

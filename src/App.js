@@ -8,10 +8,14 @@ import AppBar from "./components/AppBar/AppBar";
 import authOperations from "./redux/auth/auth-operations";
 import authSelectors from "./redux/auth/auth-selectors";
 
-const HomePage = lazy(() => import("./pages/HomePage"));
-const ContactsPage = lazy(() => import("./pages/ContactsPage"));
-const LoginPage = lazy(() => import("./pages/LoginPage"));
-const RegisterPage = lazy(() => import("./pages/RegisterPage"));
+const HomePage = lazy(() => import("./components/pages/HomePage/HomePage"));
+const ContactsPage = lazy(() =>
+  import("./components/pages/ContactsPage/ContactsPage")
+);
+const LoginPage = lazy(() => import("./components/pages/LoginPage/LoginPage"));
+const RegisterPage = lazy(() =>
+  import("./components/pages/RegisterPage/RegisterPage")
+);
 
 function App() {
   const dispatch = useDispatch();

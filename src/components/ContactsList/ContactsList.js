@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Button } from "react-bootstrap";
 import {
   deleteContact,
   fetchContacts,
 } from "../../redux/contacts/contacts-operations";
 import { getVisibleContacts } from "../../redux/contacts/contacts-selectors";
-import s from "./ContactsList.module.css";
+import styles from "./ContactsList.module.css";
 
 const ContactList = () => {
   const contacts = useSelector(getVisibleContacts);
@@ -17,20 +18,20 @@ const ContactList = () => {
   }, [dispatch]);
 
   return (
-    <div className={s.contactsWrapper}>
+    <div className={styles.contactsWrapper}>
       {contacts.length > 0 && (
         <ul>
           {contacts.map(({ id, name, number }) => (
-            <li key={id}>
+            <li className={styles.contactItem} key={id}>
               <span>{name}: </span>
               <span>{number}</span>
-              <button
-                className={s.contactButton}
-                type="button"
+              <Button
+                className={styles.contactButton}
+                variant="danger"
                 onClick={() => onDeleteContact(id)}
               >
                 Delete
-              </button>
+              </Button>
             </li>
           ))}
         </ul>

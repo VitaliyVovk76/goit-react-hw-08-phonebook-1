@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Button } from "react-bootstrap";
 import { addContacts } from "../../redux/contacts/contacts-operations";
 import { getContacts } from "../../redux/contacts/contacts-selectors";
 import s from "./ContactForm.module.css";
@@ -42,11 +43,11 @@ export default function ContactForm({ onHide }) {
     allContacts.find(({ name }) => name === newName);
 
   return (
-    <form className={s.contactForm} onSubmit={hendleSubmit}>
-      <label className={s.formLabel}>
+    <form className={s.form} onSubmit={hendleSubmit}>
+      <label className={s.label}>
         Name
         <input
-          className={s.formInput}
+          className={s.input}
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -56,10 +57,10 @@ export default function ContactForm({ onHide }) {
           onChange={hendleChange}
         />
       </label>
-      <label className={s.formLabel}>
+      <label className={s.label}>
         <span>Number</span>
         <input
-          className={s.formInput}
+          className={s.input}
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -70,9 +71,9 @@ export default function ContactForm({ onHide }) {
         />
       </label>
 
-      <button className={s.formButton} type="submit">
+      <Button className={s.button} variant="success" type="submit">
         Add contact
-      </button>
+      </Button>
     </form>
   );
 }
