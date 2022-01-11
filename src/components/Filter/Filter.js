@@ -1,11 +1,11 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeFilter } from "../../redux/contacts/contacts-actions";
-import { getFilter } from "../../redux/contacts/contacts-selectors";
+import { contactsActions } from "redux/contacts";
+import { contactsSelectors } from "redux/contacts";
 import styles from "./Filter.module.css";
 
 const Filter = () => {
-  const value = useSelector(getFilter);
+  const value = useSelector(contactsSelectors.getFilter);
   const dispatch = useDispatch();
   return (
     <div className={styles.wrapper}>
@@ -14,7 +14,7 @@ const Filter = () => {
         className={styles.input}
         type="text"
         value={value}
-        onChange={(e) => dispatch(changeFilter(e.target.value))}
+        onChange={(e) => dispatch(contactsActions.changeFilter(e.target.value))}
       />
     </div>
   );

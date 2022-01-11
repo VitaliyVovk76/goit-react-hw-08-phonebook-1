@@ -1,20 +1,17 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
-import {
-  deleteContact,
-  fetchContacts,
-} from "../../redux/contacts/contacts-operations";
-import { getVisibleContacts } from "../../redux/contacts/contacts-selectors";
+import { contactsOperations, contactsSelectors } from "redux/contacts";
 import styles from "./ContactsList.module.css";
 
 const ContactList = () => {
-  const contacts = useSelector(getVisibleContacts);
+  const contacts = useSelector(contactsSelectors.getVisibleContacts);
   const dispatch = useDispatch();
-  const onDeleteContact = (contactId) => dispatch(deleteContact(contactId));
+  const onDeleteContact = (contactId) =>
+    dispatch(contactsOperations.deleteContact(contactId));
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(contactsOperations.fetchContacts());
   }, [dispatch]);
 
   return (

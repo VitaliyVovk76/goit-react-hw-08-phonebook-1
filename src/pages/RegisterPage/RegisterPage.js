@@ -1,17 +1,26 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
-import Input from "../../Input/Input";
-import Form from "../../Form/Form";
-import authOperations from "../../../redux/auth/auth-operations";
+import AuthInput from "components/AuthInput";
+import AuthForm from "components/AuthForm";
+import authOperations from "redux/auth/auth-operations";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const dispatch = useDispatch();
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const notify = () => {
+    toast.warning("password must be at least 7 characters");
+  };
+
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
+      case "name":
+        return setName(value);
       case "email":
         return setEmail(value);
       case "password":
@@ -22,25 +31,33 @@ export default function LoginPage() {
   };
 
   const handleSubmit = (e) => {
+    if (password.length < 7) {
+      notify();
+    }
     e.preventDefault();
-    console.log(email);
-    dispatch(authOperations.logIn({ email, password }));
-
+    dispatch(authOperations.register({ name, email, password }));
+    setName("");
     setEmail("");
     setPassword("");
   };
-
   return (
     <div>
-      <Form onSubmit={handleSubmit} autoComplete="off">
-        <Input
+      <AuthForm onSubmit={handleSubmit} autoComplete="off">
+        <AuthInput
+          type="text"
+          name="name"
+          value={name}
+          placeholder="name"
+          onChange={handleChange}
+        />
+        <AuthInput
           type="email"
           name="email"
           value={email}
           placeholder="e-mail"
           onChange={handleChange}
         />
-        <Input
+        <AuthInput
           type="password"
           name="password"
           value={password}
@@ -48,9 +65,10 @@ export default function LoginPage() {
           onChange={handleChange}
         />
         <Button variant="primary" type="submit">
-          Log in
+          Register
         </Button>
-      </Form>
+      </AuthForm>
+      <ToastContainer />
     </div>
   );
 }

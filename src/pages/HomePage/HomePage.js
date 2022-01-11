@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
-import authSelectors from "../../../redux/auth/auth-selectors";
+import authSelectors from "redux/auth/auth-selectors";
 import styles from "./HomePage.module.css";
 
 export default function HomePage() {

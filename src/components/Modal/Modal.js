@@ -1,6 +1,6 @@
 import { Modal, Button } from "react-bootstrap";
 import React, { useState } from "react";
-import ContatcForm from "../ContactForm/ContactForm";
+import ContatcForm from "../ContactForm";
 import styles from "./Modal.module.css";
 
 function MyVerticallyCenteredModal(props) {

@@ -1,27 +1,17 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
-import Input from "../../Input/Input";
-import Form from "../../Form/Form";
-import authOperations from "../../../redux/auth/auth-operations";
+import AuthInput from "components/AuthInput";
+import AuthForm from "components/AuthForm";
+import authOperations from "redux/auth/auth-operations";
 
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-export default function RegisterPage() {
+export default function LoginPage() {
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const notify = () => {
-    toast.warning("password must be at least 7 characters");
-  };
-
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
-      case "name":
-        return setName(value);
       case "email":
         return setEmail(value);
       case "password":
@@ -32,33 +22,25 @@ export default function RegisterPage() {
   };
 
   const handleSubmit = (e) => {
-    if (password.length < 7) {
-      notify();
-    }
     e.preventDefault();
-    dispatch(authOperations.register({ name, email, password }));
-    setName("");
+    console.log(email);
+    dispatch(authOperations.logIn({ email, password }));
+
     setEmail("");
     setPassword("");
   };
+
   return (
     <div>
-      <Form onSubmit={handleSubmit} autoComplete="off">
-        <Input
-          type="text"
-          name="name"
-          value={name}
-          placeholder="name"
-          onChange={handleChange}
-        />
-        <Input
+      <AuthForm onSubmit={handleSubmit} autoComplete="off">
+        <AuthInput
           type="email"
           name="email"
           value={email}
           placeholder="e-mail"
           onChange={handleChange}
         />
-        <Input
+        <AuthInput
           type="password"
           name="password"
           value={password}
@@ -66,10 +48,9 @@ export default function RegisterPage() {
           onChange={handleChange}
         />
         <Button variant="primary" type="submit">
-          Register
+          Log in
         </Button>
-      </Form>
-      <ToastContainer />
+      </AuthForm>
     </div>
   );
 }

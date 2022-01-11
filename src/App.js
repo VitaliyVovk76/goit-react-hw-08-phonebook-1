@@ -1,21 +1,17 @@
 import { useEffect, Suspense, lazy } from "react";
 import { Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Container from "./components/Container/Container";
-import PrivateRoute from "./components/routers/PrivateRoute";
-import PublicRoute from "./components/routers/PublicRoute";
-import AppBar from "./components/AppBar/AppBar";
-import authOperations from "./redux/auth/auth-operations";
-import authSelectors from "./redux/auth/auth-selectors";
+import Container from "components/Container";
+import PrivateRoute from "components/routers/PrivateRoute";
+import PublicRoute from "components/routers/PublicRoute";
+import AppBar from "components/AppBar/AppBar";
+import authOperations from "redux/auth/auth-operations";
+import authSelectors from "redux/auth/auth-selectors";
 
-const HomePage = lazy(() => import("./components/pages/HomePage/HomePage"));
-const ContactsPage = lazy(() =>
-  import("./components/pages/ContactsPage/ContactsPage")
-);
-const LoginPage = lazy(() => import("./components/pages/LoginPage/LoginPage"));
-const RegisterPage = lazy(() =>
-  import("./components/pages/RegisterPage/RegisterPage")
-);
+const HomePage = lazy(() => import("pages/HomePage"));
+const ContactsPage = lazy(() => import("pages/ContactsPage"));
+const LoginPage = lazy(() => import("pages/LoginPage"));
+const RegisterPage = lazy(() => import("pages/RegisterPage"));
 
 function App() {
   const dispatch = useDispatch();

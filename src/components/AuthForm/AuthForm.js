@@ -1,4 +1,4 @@
-import styles from "./Form.module.css";
+import styles from "./AuthForm.module.css";
 
 export default function Form(props) {
   return (

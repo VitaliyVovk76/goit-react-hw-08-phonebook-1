@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
-import { addContacts } from "../../redux/contacts/contacts-operations";
-import { getContacts } from "../../redux/contacts/contacts-selectors";
+import { contactsOperations } from "redux/contacts";
+import { contactsSelectors } from "redux/contacts";
 import s from "./ContactForm.module.css";
 
 export default function ContactForm({ onHide }) {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
-  const allContacts = useSelector(getContacts);
+  const allContacts = useSelector(contactsSelectors.getContacts);
 
   const dispatch = useDispatch();
 
@@ -29,7 +29,7 @@ export default function ContactForm({ onHide }) {
       return;
     }
 
-    dispatch(addContacts({ name, number }));
+    dispatch(contactsOperations.addContacts({ name, number }));
     onHide();
     reset();
   };
